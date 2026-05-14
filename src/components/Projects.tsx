@@ -6,6 +6,14 @@ import { ExternalLink, Trophy } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 
 const projects = [
+    {
+    title: "Secure P2P Chat Application",
+    date: "Nov 2025 – Jan 2026",
+    description: "End-to-end encrypted messaging system with custom TCP socket implementation.",
+    features: ["RSA-2048 + AES-256 encryption", "Cross-platform support", "Real-time messaging"],
+    tech: ["Flutter", "Python", "MongoDB"],
+    award: false,
+  },
   {
     title: "SeamCarve Pro: Content-Aware Image Resizing",
     date: "Winner of 1st Place at DeepMinds 6 (Feb 2026)",
@@ -30,22 +38,7 @@ const projects = [
     tech: ["HTML", "CSS", "JavaScript", "PHP", "SQL"],
     award: true,
   },
-  {
-    title: "Secure P2P Chat Application",
-    date: "Nov 2025 – Jan 2026",
-    description: "End-to-end encrypted messaging system with custom TCP socket implementation.",
-    features: ["RSA-2048 + AES-256 encryption", "Cross-platform support", "Real-time messaging"],
-    tech: ["Flutter", "Python", "MongoDB"],
-    award: false,
-  },
-  {
-    title: "Hotel Management System",
-    date: "Feb 2025 – Jun 2025",
-    description: "A comprehensive console application for managing hotel operations.",
-    features: ["Guest/Admin login", "Room booking management", "File handling and linked lists", "Occupancy and income reports"],
-    tech: ["C++"],
-    award: false,
-  },
+
 ];
 
 export function Projects() {

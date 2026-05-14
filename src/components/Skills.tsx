@@ -11,7 +11,6 @@ const technicalSkills = [
   { name: "PHP", level: 75 },
   { name: "SQL", level: 85 },
   { name: "MongoDB", level: 80 },
-  { name: "OpenCV", level: 75 },
   { name: "Flask", level: 80 },
   { name: "Odoo", level: 70 },
 ];

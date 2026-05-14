@@ -69,6 +69,7 @@ export function Hero() {
             <a
               href="/resume.pdf"
               target="_blank"
+              download
               className="flex items-center gap-2 glass px-6 py-3 rounded-full font-medium hover:bg-white/10 transition-all hover:scale-105 active:scale-95"
             >
               <Download className="w-4 h-4" />
@@ -88,11 +89,11 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.6 }}
             className="flex items-center gap-6"
           >
-            <a href="https://github.com/marczaki" target="_blank" rel="noreferrer" className="p-3 rounded-full glass hover:text-primary transition-colors hover:scale-110 active:scale-95">
+            <a href="https://github.com/marc-zaki" target="_blank" rel="noreferrer" className="p-3 rounded-full glass hover:text-primary transition-colors hover:scale-110 active:scale-95">
               <FaGithub className="w-6 h-6" />
               <span className="sr-only">GitHub</span>
             </a>
-            <a href="https://linkedin.com/in/marczaki" target="_blank" rel="noreferrer" className="p-3 rounded-full glass hover:text-primary transition-colors hover:scale-110 active:scale-95">
+            <a href="https://www.linkedin.com/in/marc-zakii/" target="_blank" rel="noreferrer" className="p-3 rounded-full glass hover:text-primary transition-colors hover:scale-110 active:scale-95">
               <FaLinkedin className="w-6 h-6" />
               <span className="sr-only">LinkedIn</span>
             </a>
