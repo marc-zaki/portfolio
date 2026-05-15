@@ -105,10 +105,20 @@ export function Projects() {
 
               {/* Card Footer Links */}
               <div className="px-6 py-4 border-t border-white/10 flex justify-between items-center bg-black/5 dark:bg-white/5">
-                <a href={project.github || "#"} target={project.github ? "_blank" : undefined} rel={project.github ? "noreferrer" : undefined} className="flex items-center gap-2 text-sm font-medium hover:text-primary transition-colors">
+                <a
+                  href={project.github || "#"}
+                  target={project.github ? "_blank" : undefined}
+                  rel={project.github ? "noreferrer" : undefined}
+                  onClick={(e) => { if (!project.github) e.preventDefault(); }}
+                  className={`flex items-center gap-2 text-sm font-medium transition-colors ${!project.github ? "text-foreground/40 cursor-default hover:text-foreground/40" : "hover:text-primary"}`}
+                >
                   <FaGithub className="w-4 h-4" /> Code
                 </a>
-                <a href="#" className="flex items-center gap-2 text-sm font-medium hover:text-primary transition-colors">
+                <a
+                  href="#"
+                  onClick={(e) => e.preventDefault()}
+                  className="flex items-center gap-2 text-sm font-medium text-foreground/40 cursor-default transition-colors hover:text-foreground/40"
+                >
                   <ExternalLink className="w-4 h-4" /> Live Demo
                 </a>
               </div>
