@@ -1,12 +1,13 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #0ea5e9; /* Sky blue 500 */
+  --color-primary: #0ea5e9;
+  /* Sky blue 500 */
   --color-primary-foreground: #ffffff;
-  
+
   --color-background-light: #f8fafc;
   --color-foreground-light: #0f172a;
-  
+
   --color-background-dark: #020617;
   --color-foreground-dark: #f8fafc;
 }
@@ -56,5 +57,6 @@ body {
 }
 
 .dark .text-gradient {
-  background-image: linear-gradient(to right, #38bdf8, #818cf8);
+  background-image: linear-gradient(to right, #38bdf8, #67e8f9);
+  /* Sky Blue to Cyan */
 }
