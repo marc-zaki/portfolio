@@ -7,29 +7,54 @@ import { useState } from "react";
 
 export function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-  const [status, setStatus] = useState<"idle" | "submitting" | "success">("idle");
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("submitting");
-    // Simulate API call
-    setTimeout(() => {
-      setStatus("success");
-      setFormData({ name: "", email: "", message: "" });
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "a0959c1f-726e-411e-b77e-65b5d7d318e4",
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        setStatus("success");
+        setFormData({ name: "", email: "", message: "" });
+        setTimeout(() => setStatus("idle"), 3000);
+      } else {
+        console.error("Error submitting form", result);
+        setStatus("error");
+        setTimeout(() => setStatus("idle"), 3000);
+      }
+    } catch (error) {
+      console.error("Error submitting form", error);
+      setStatus("error");
       setTimeout(() => setStatus("idle"), 3000);
-    }, 1500);
+    }
   };
 
   return (
     <section className="py-20 relative" id="contact">
       <div className="container mx-auto px-4 md:px-6">
-        <SectionHeading 
-          title="Get In Touch" 
+        <SectionHeading
+          title="Get In Touch"
           subtitle="Have a question or want to work together? Let's connect!"
         />
 
         <div className="grid md:grid-cols-2 gap-12 mt-12 max-w-5xl mx-auto items-start">
-          
+
           {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -40,7 +65,7 @@ export function Contact() {
           >
             <div className="glass p-8 rounded-3xl">
               <h3 className="text-2xl font-bold mb-6 text-gradient">Contact Information</h3>
-              
+
               <div className="space-y-6">
                 <div className="flex items-center gap-4 group">
                   <div className="w-12 h-12 bg-primary/10 text-primary rounded-full flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
@@ -99,7 +124,7 @@ export function Contact() {
                   placeholder="John Doe"
                 />
               </div>
-              
+
               <div>
                 <label htmlFor="email" className="block text-sm font-medium mb-2 text-foreground/80">Your Email</label>
                 <input
@@ -135,6 +160,8 @@ export function Contact() {
                   "Sending..."
                 ) : status === "success" ? (
                   "Message Sent!"
+                ) : status === "error" ? (
+                  "Failed to send. Please try again."
                 ) : (
                   <>
                     Send Message <Send className="w-4 h-4" />
@@ -143,7 +170,7 @@ export function Contact() {
               </button>
             </form>
           </motion.div>
-          
+
         </div>
       </div>
     </section>
