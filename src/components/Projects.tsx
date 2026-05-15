@@ -15,6 +15,8 @@ const projects = [
     tech: ["Python", "OpenCV", "Numba", "CustomTkinter", "Flask"],
     award: true,
     github: "",
+    demo: "",
+    hideDemo: true,
   },
   {
     title: "OurHealthEG",
@@ -24,6 +26,8 @@ const projects = [
     tech: ["Odoo ERP", "Python", "PostgreSQL"],
     award: true,
     github: "",
+    demo: "",
+    hideLinks: true,
   },
   {
     title: "Cairo to Capital Transport",
@@ -33,6 +37,7 @@ const projects = [
     tech: ["HTML", "CSS", "JavaScript", "PHP", "SQL"],
     award: true,
     github: "https://github.com/marc-zaki/oose-c2c",
+    demo: "https://oose-c2c.vercel.app/View/Homepage.html",
   },
   {
     title: "Secure P2P Chat Application",
@@ -42,6 +47,8 @@ const projects = [
     tech: ["Flutter", "Python", "MongoDB"],
     award: false,
     github: "https://github.com/marc-zaki/secureapp",
+    demo: "",
+    hideDemo: true,
   },
 
 ];
@@ -104,24 +111,30 @@ export function Projects() {
               </div>
 
               {/* Card Footer Links */}
-              <div className="px-6 py-4 border-t border-white/10 flex justify-between items-center bg-black/5 dark:bg-white/5">
-                <a
-                  href={project.github || "#"}
-                  target={project.github ? "_blank" : undefined}
-                  rel={project.github ? "noreferrer" : undefined}
-                  onClick={(e) => { if (!project.github) e.preventDefault(); }}
-                  className={`flex items-center gap-2 text-sm font-medium transition-colors ${!project.github ? "text-foreground/40 cursor-default hover:text-foreground/40" : "hover:text-primary"}`}
-                >
-                  <FaGithub className="w-4 h-4" /> Code
-                </a>
-                <a
-                  href="#"
-                  onClick={(e) => e.preventDefault()}
-                  className="flex items-center gap-2 text-sm font-medium text-foreground/40 cursor-default transition-colors hover:text-foreground/40"
-                >
-                  <ExternalLink className="w-4 h-4" /> Live Demo
-                </a>
-              </div>
+              {!project.hideLinks && (
+                <div className="px-6 py-4 border-t border-white/10 flex justify-between items-center bg-black/5 dark:bg-white/5">
+                  <a
+                    href={project.github || "#"}
+                    target={project.github ? "_blank" : undefined}
+                    rel={project.github ? "noreferrer" : undefined}
+                    onClick={(e) => { if (!project.github) e.preventDefault(); }}
+                    className={`flex items-center gap-2 text-sm font-medium transition-colors ${!project.github ? "text-foreground/40 cursor-default hover:text-foreground/40" : "hover:text-primary"}`}
+                  >
+                    <FaGithub className="w-4 h-4" /> Code
+                  </a>
+                  {!project.hideDemo && (
+                    <a
+                      href={project.demo || "#"}
+                      target={project.demo ? "_blank" : undefined}
+                      rel={project.demo ? "noreferrer" : undefined}
+                      onClick={(e) => { if (!project.demo) e.preventDefault(); }}
+                      className={`flex items-center gap-2 text-sm font-medium transition-colors ${!project.demo ? "text-foreground/40 cursor-default hover:text-foreground/40" : "hover:text-primary"}`}
+                    >
+                      <ExternalLink className="w-4 h-4" /> Live Demo
+                    </a>
+                  )}
+                </div>
+              )}
             </motion.div>
           ))}
         </div>
