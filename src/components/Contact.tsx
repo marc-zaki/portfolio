@@ -4,20 +4,13 @@ import { motion } from "framer-motion";
 import { SectionHeading } from "./SectionHeading";
 import { Mail, MapPin, Phone, Send } from "lucide-react";
 import { useState } from "react";
-import HCaptcha from "@hcaptcha/react-hcaptcha";
 
 export function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error" | "captcha_required">("idle");
-  const [captchaToken, setCaptchaToken] = useState<string>("");
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!captchaToken) {
-      setStatus("captcha_required");
-      setTimeout(() => setStatus("idle"), 3000);
-      return;
-    }
     setStatus("submitting");
 
     try {
@@ -32,7 +25,6 @@ export function Contact() {
           name: formData.name,
           email: formData.email,
           message: formData.message,
-          "h-captcha-response": captchaToken,
         }),
       });
 
@@ -159,18 +151,10 @@ export function Contact() {
                 />
               </div>
 
-              <div className="flex justify-center w-full my-2">
-                <HCaptcha
-                  sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
-                  onVerify={(token) => setCaptchaToken(token)}
-                  onExpire={() => setCaptchaToken("")}
-                />
-              </div>
-
               <button
                 type="submit"
-                disabled={status === "submitting" || !captchaToken}
-                className="w-full py-4 rounded-xl bg-primary text-white font-medium hover:bg-primary/90 transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                disabled={status === "submitting"}
+                className="w-full py-4 rounded-xl bg-primary text-white font-medium hover:bg-primary/90 transition-all flex items-center justify-center gap-2 disabled:opacity-70"
               >
                 {status === "submitting" ? (
                   "Sending..."
@@ -178,8 +162,6 @@ export function Contact() {
                   "Message Sent!"
                 ) : status === "error" ? (
                   "Failed to send. Please try again."
-                ) : status === "captcha_required" ? (
-                  "Please complete captcha"
                 ) : (
                   <>
                     Send Message <Send className="w-4 h-4" />
