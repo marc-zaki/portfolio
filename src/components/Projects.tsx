@@ -6,14 +6,7 @@ import { ExternalLink, Trophy } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 
 const projects = [
-    {
-    title: "Secure P2P Chat Application",
-    date: "Nov 2025 – Jan 2026",
-    description: "End-to-end encrypted messaging system with custom TCP socket implementation.",
-    features: ["RSA-2048 + AES-256 encryption", "Cross-platform support", "Real-time messaging"],
-    tech: ["Flutter", "Python", "MongoDB"],
-    award: false,
-  },
+
   {
     title: "SeamCarve Pro: Content-Aware Image Resizing",
     date: "Winner of 1st Place at DeepMinds 6 (Feb 2026)",
@@ -21,6 +14,7 @@ const projects = [
     features: ["Dynamic Programming based seam carving algorithm", "Forward Energy optimization", "Real-time image processing", "Flask visualization", "Modern desktop UI"],
     tech: ["Python", "OpenCV", "Numba", "CustomTkinter", "Flask"],
     award: true,
+    github: "",
   },
   {
     title: "OurHealthEG",
@@ -29,6 +23,7 @@ const projects = [
     features: ["Affordable medicine distribution system", "Focused on accessibility and patient well-being"],
     tech: ["Odoo ERP", "Python", "PostgreSQL"],
     award: true,
+    github: "",
   },
   {
     title: "Cairo to Capital Transport",
@@ -37,6 +32,16 @@ const projects = [
     features: ["Applied OOP principles and design patterns", "Reduced physical queues"],
     tech: ["HTML", "CSS", "JavaScript", "PHP", "SQL"],
     award: true,
+    github: "https://github.com/marc-zaki/oose-c2c",
+  },
+  {
+    title: "Secure P2P Chat Application",
+    date: "Nov 2025 – Jan 2026",
+    description: "End-to-end encrypted messaging system with custom TCP socket implementation.",
+    features: ["RSA-2048 + AES-256 encryption", "Cross-platform support", "Real-time messaging"],
+    tech: ["Flutter", "Python", "MongoDB"],
+    award: false,
+    github: "https://github.com/marc-zaki/secureapp",
   },
 
 ];
@@ -45,8 +50,8 @@ export function Projects() {
   return (
     <section className="py-20 bg-primary/5" id="projects">
       <div className="container mx-auto px-4 md:px-6">
-        <SectionHeading 
-          title="Featured Projects" 
+        <SectionHeading
+          title="Featured Projects"
           subtitle="A selection of my best work and award-winning projects."
         />
 
@@ -67,7 +72,7 @@ export function Projects() {
                     Award Winner / Nominee
                   </div>
                 )}
-                
+
                 <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
                   {project.title}
                 </h3>
@@ -75,7 +80,7 @@ export function Projects() {
                 <p className="text-foreground/70 text-sm mb-6 flex-1">
                   {project.description}
                 </p>
-                
+
                 <div className="mb-6">
                   <h4 className="text-xs font-semibold uppercase text-foreground/50 mb-2">Key Features</h4>
                   <ul className="text-sm text-foreground/70 space-y-1 list-disc list-inside">
@@ -88,8 +93,8 @@ export function Projects() {
 
                 <div className="flex flex-wrap gap-2 mt-auto">
                   {project.tech.map((t, i) => (
-                    <span 
-                      key={i} 
+                    <span
+                      key={i}
                       className="px-2 py-1 text-xs rounded-md bg-primary/10 text-primary border border-primary/20"
                     >
                       {t}
@@ -97,10 +102,10 @@ export function Projects() {
                   ))}
                 </div>
               </div>
-              
+
               {/* Card Footer Links */}
               <div className="px-6 py-4 border-t border-white/10 flex justify-between items-center bg-black/5 dark:bg-white/5">
-                <a href="#" className="flex items-center gap-2 text-sm font-medium hover:text-primary transition-colors">
+                <a href={project.github || "#"} target={project.github ? "_blank" : undefined} rel={project.github ? "noreferrer" : undefined} className="flex items-center gap-2 text-sm font-medium hover:text-primary transition-colors">
                   <FaGithub className="w-4 h-4" /> Code
                 </a>
                 <a href="#" className="flex items-center gap-2 text-sm font-medium hover:text-primary transition-colors">
