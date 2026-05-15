@@ -14,7 +14,7 @@ const projects = [
     features: ["Dynamic Programming based seam carving algorithm", "Forward Energy optimization", "Real-time image processing", "Flask visualization", "Modern desktop UI"],
     tech: ["Python", "OpenCV", "Numba", "CustomTkinter", "Flask"],
     award: true,
-    github: "",
+    github: "https://github.com/bannxa/Seam-Carving",
     demo: "",
     hideDemo: true,
   },
