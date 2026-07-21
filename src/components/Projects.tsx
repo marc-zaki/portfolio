@@ -6,7 +6,22 @@ import { ExternalLink, Trophy } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 
 const projects = [
-
+  {
+    title: "MASARI - CS Course Recommender & Interview Analyzer",
+    date: "May 2026 - Nominated for Deepminds 7th Edition",
+    description: "An intelligent, full-stack educational and career companion that merges LLMs, dynamic data visualization, and interactive mock interview simulations to guide CS students from upskilling to acing technical interviews.",
+    features: [
+      "Generative technical grading & strict JSON LLM parsing",
+      "WebRTC & Whisper API voice transcription for interviews",
+      "Semantic search & VADER sentiment analysis for course ranking",
+      "Asynchronous headless scraping engine",
+      "Interactive data visualization dashboard"
+    ],
+    tech: ["Python", "FastAPI", "Vanilla JS", "Groq API", "MongoDB", "Selenium"],
+    award: false,
+    github: "https://github.com/marc-zaki/AI-Powered-CS-Course-Recommender-Intelligence-Dashboard",
+    demo: "https://masari-cs.vercel.app/",
+  },
   {
     title: "SeamCarve Pro: Content-Aware Image Resizing",
     date: "Winner of 1st Place at DeepMinds 6 (Feb 2026)",
