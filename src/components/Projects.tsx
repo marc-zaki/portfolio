@@ -18,7 +18,7 @@ const projects = [
       "Interactive data visualization dashboard"
     ],
     tech: ["Python", "FastAPI", "Vanilla JS", "Groq API", "MongoDB", "Selenium"],
-    award: false,
+    award: true,
     github: "https://github.com/marc-zaki/AI-Powered-CS-Course-Recommender-Intelligence-Dashboard",
     demo: "https://masari-cs.vercel.app/",
   },
